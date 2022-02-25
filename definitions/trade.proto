@@ -1,0 +1,25 @@
+syntax = "proto3";
+option go_package = "/trade";
+
+import "user.proto";
+
+service TradeService {
+  rpc GetTradeStatus(GetTradeStatusRequest) returns(GetTradeStatusResponse);
+}
+
+message Trade {
+  string id = 1;
+  string symbol = 2;
+  double amount = 3;
+  string status = 4;
+  User user = 5;
+}
+
+message GetTradeStatusRequest {
+  string id = 1;
+}
+
+message GetTradeStatusResponse {
+  Trade trade = 1;
+  GetTradeStatusRequest request = 2;
+}
